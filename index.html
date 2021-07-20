@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+     <style>
+         body{
+             min-height: 100vh; 
+               display: flex;/*esnek bir ekran*/
+             align-items: center;/*öğeler ortala*/
+            justify-content: center;/*merkezi ortala */
+         }
+         .container{
+            text-align: center;
+         }
+
+         .colorCode{
+             text-transform: capitalize;
+             font-family: 'Times New Roman', Times, serif;
+         }
+
+         .code{
+             text-transform: uppercase;/*spana gelen yazı büyük olsun*/
+            font-size: 3rem;
+         }
+
+         .codeBtn{
+             color: white;
+             background: rgba(0, 0, 0,.5);
+             border: 3px solid gray;
+             border-radius: 10px;
+             padding: 0.25rem 0.80rem;
+             font-size: 1.6rem;
+             cursor: pointer;
+             outline: none;
+             text-transform: capitalize;
+             transform: scale(0.9);
+             transition: 1s;
+         }
+
+         .codeBtn:hover{
+            transform: scale(1);
+            background: rgba(0, 0, 0, 1);
+
+         }
+
+
+
+     </style>
+    
+    <div class="container">
+        <h2 class="colorCode">This color is: <span class="code"></span> </h2>
+    
+         <button type="button" class="codeBtn">Press here to change color</button>
+    </div>
+
+
+    <script>
+
+        //button
+        let codeBtn = document.querySelector(".codeBtn");
+            codeBtn.addEventListener("click", changeColor);
+
+        //body
+        let bodyColor = document.querySelector("body"); 
+
+        //span
+        let textColor = document.querySelector(".code");
+        
+       //color dizisi
+        let colors = [
+                        {name:"red",    bgColor:"red"},
+                        {name:"yellow", bgColor:"yellow"},
+                        {name:"purple", bgColor:"purple"},
+                        {name:"orange", bgColor:"orange"}
+                   ]
+
+        let index = 0;
+        let colorsLength = colors.length;//4
+
+        function changeColor(){
+              // 0           4
+            if(index < colorsLength){
+
+                bodyColor.style.backgroundColor = colors[index].bgColor;//colors nesnesi içinedki değerleri bgColor olanlareı al
+                textColor.textContent = colors[index].name;//colors nesnesinin içindeki değerleri name olanları al
+           
+                index++;
+            }
+        //  eğer 5/4       4  
+            if(index >= colorsLength){
+                index = 0;//indexi 4 ten 0 a getir (başa getir)
+            }
+        }
+
+  
+   
+
+    </script>
+</body>
+</html>
